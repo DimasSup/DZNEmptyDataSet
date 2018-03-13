@@ -571,8 +571,12 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
         
         [self setEmptyDataSetView:nil];
     }
-    
-    self.scrollEnabled = YES;
+	BOOL enable = YES;
+	if([self.emptyDataSetDelegate respondsToSelector:@selector(emptyDataSetInvalidateShouldEnableScroll:)]){
+		enable = [self.emptyDataSetDelegate emptyDataSetInvalidateShouldEnableScroll:self];
+	}
+	
+    self.scrollEnabled = enable;
     
     // Notifies that the empty dataset view did disappear
     [self dzn_didDisappear];

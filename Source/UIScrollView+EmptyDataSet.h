@@ -208,6 +208,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView;
 
 /**
+ Asks the delegate for scroll permission. Default is YES.
+ 
+ @param scrollView A scrollView subclass object informing the delegate.
+ @return YES if the scrollable should become YES when dataset invalidated.
+ */
+- (BOOL)emptyDataSetInvalidateShouldEnableScroll:(UIScrollView *)scrollView;
+
+/**
  Asks the delegate for image view animation permission. Default is NO.
  Make sure to return a valid CAAnimation object from imageAnimationForEmptyDataSet:
  
